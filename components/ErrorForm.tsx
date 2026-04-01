@@ -2,11 +2,7 @@
 
 import { useState } from "react";
 
-type Props = {
-  onResult: (data: any) => void;
-};
-
-export default function ErrorForm({ onResult }: Props) {
+export default function ErrorForm({ onResult }: any) {
   const [error, setError] = useState("");
   const [code, setCode] = useState("");
   const [loading, setLoading] = useState(false);
@@ -35,25 +31,26 @@ export default function ErrorForm({ onResult }: Props) {
   };
 
   return (
-    <div className="space-y-4">
+    <div className="bg-gray-900 p-6 rounded-xl border border-gray-800 space-y-4">
+
       <textarea
-        placeholder="Paste error message..."
+        placeholder="Paste your error..."
         value={error}
         onChange={(e) => setError(e.target.value)}
-        className="w-full border rounded p-3"
+        className="w-full bg-gray-800 border border-gray-700 rounded p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
 
       <textarea
         placeholder="Paste your code..."
         value={code}
         onChange={(e) => setCode(e.target.value)}
-        className="w-full border rounded p-3"
+        className="w-full bg-gray-800 border border-gray-700 rounded p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
 
       <button
         onClick={handleSubmit}
         disabled={loading}
-        className="bg-black text-white px-6 py-2 rounded"
+        className="bg-blue-600 hover:bg-blue-700 transition px-6 py-2 rounded font-medium"
       >
         {loading ? "Analyzing..." : "Analyze"}
       </button>
