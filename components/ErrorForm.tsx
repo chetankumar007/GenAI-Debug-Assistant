@@ -22,7 +22,7 @@ export default function ErrorForm({ onResult }: any) {
       });
 
       const data = await res.json();
-      onResult(data);
+   onResult(data, error);
     } catch (err) {
       console.error(err);
     } finally {
@@ -31,26 +31,33 @@ export default function ErrorForm({ onResult }: any) {
   };
 
   return (
-    <div className="bg-gray-900 p-6 rounded-xl border border-gray-800 space-y-4">
-
+    <div
+      className="bg-black border border-gray-800 p-6 rounded-xl space-y-4
+                    shadow-[0_0_20px_rgba(59,130,246,0.2)]"
+    >
       <textarea
         placeholder="Paste your error..."
         value={error}
         onChange={(e) => setError(e.target.value)}
-        className="w-full bg-gray-800 border border-gray-700 rounded p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-sm
+                   focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
 
       <textarea
         placeholder="Paste your code..."
         value={code}
         onChange={(e) => setCode(e.target.value)}
-        className="w-full bg-gray-800 border border-gray-700 rounded p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+        className="w-full bg-gray-900 border border-gray-700 rounded p-3 text-sm
+                   focus:outline-none focus:ring-2 focus:ring-blue-500"
       />
 
       <button
         onClick={handleSubmit}
         disabled={loading}
-        className="bg-blue-600 hover:bg-blue-700 transition px-6 py-2 rounded font-medium"
+        className="bg-blue-600 px-6 py-2 rounded font-medium
+                   shadow-[0_0_15px_rgba(59,130,246,0.7)]
+                   hover:shadow-[0_0_25px_rgba(59,130,246,1)]
+                   transition"
       >
         {loading ? "Analyzing..." : "Analyze"}
       </button>
