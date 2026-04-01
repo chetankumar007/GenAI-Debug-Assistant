@@ -8,14 +8,20 @@ export default function Home() {
   const [result, setResult] = useState<any>(null);
 
   return (
-    <div className="p-10 max-w-3xl mx-auto">
-      <h1 className="text-3xl font-bold mb-6">
-        AI Debug Assistant 🚀
-      </h1>
+    <main className="min-h-screen bg-gray-950 text-white p-6">
+      <div className="max-w-4xl mx-auto">
 
-      <ErrorForm onResult={setResult} />
+        <h1 className="text-4xl font-bold mb-2">
+          AI Debug Assistant 🚀
+        </h1>
+        <p className="text-gray-400 mb-8">
+          Paste your error and get instant debugging insights
+        </p>
 
-      {result && <ResultCard data={result} />}
-    </div>
+        <ErrorForm onResult={setResult} />
+
+        {result && <ResultCard data={result} />}
+      </div>
+    </main>
   );
 }
