@@ -16,7 +16,6 @@ export default function ResultCard({ data }: Props) {
     navigator.clipboard.writeText(text);
   };
 
-  // 🔥 Format AI text (bold, code, line breaks)
   const formatText = (text: string) => {
     if (!text) return "";
 
@@ -26,15 +25,23 @@ export default function ResultCard({ data }: Props) {
       .replace(/\n/g, "<br/>");
   };
 
-  // 🔥 Reusable section component
   const Section = ({ title, content }: any) => (
-    <div className="bg-gray-900 border border-gray-800 p-5 rounded-xl">
+    <div
+      className="bg-black border border-gray-800 p-5 rounded-xl
+                    shadow-[0_0_10px_rgba(59,130,246,0.2)]
+                    hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] transition"
+    >
       <div className="flex justify-between items-center mb-3">
-        <h2 className="font-semibold text-lg text-blue-400">{title}</h2>
+        <h2
+          className="font-semibold text-lg text-blue-400
+                       drop-shadow-[0_0_6px_rgba(59,130,246,0.8)]"
+        >
+          {title}
+        </h2>
 
         <button
           onClick={() => copy(content)}
-          className="text-xs text-gray-400 hover:text-white"
+          className="text-xs text-gray-400 hover:text-blue-400 transition"
         >
           Copy
         </button>
@@ -51,29 +58,33 @@ export default function ResultCard({ data }: Props) {
     <div className="mt-8 space-y-4">
       {/* ⚡ Quick Insight */}
       {data.explanation && (
-        <div className="bg-blue-900/30 border border-blue-700 p-4 rounded-xl">
+        <div
+          className="bg-blue-900/20 border border-blue-500 p-4 rounded-xl
+                        shadow-[0_0_20px_rgba(59,130,246,0.6)]"
+        >
           <p className="text-sm text-blue-300">
             ⚡ <b>Quick Insight:</b> {data.explanation.split(".")[0]}
           </p>
         </div>
       )}
 
-      {/* 📘 Explanation */}
+      {/* Sections */}
       {data.explanation && (
         <Section title="Explanation" content={data.explanation} />
       )}
 
-      {/* 🔍 Root Cause */}
       {data.rootCause && (
         <Section title="Root Cause" content={data.rootCause} />
       )}
 
-      {/* 🛠 Fix */}
       {data.fix && <Section title="Fix" content={data.fix} />}
 
-      {/* 💻 Improved Code */}
+      {/* Code */}
       {data.improvedCode && (
-        <div className="bg-gray-900 border border-gray-800 p-5 rounded-xl">
+        <div
+          className="bg-black border border-gray-800 p-5 rounded-xl
+                        shadow-[0_0_15px_rgba(34,197,94,0.4)]"
+        >
           <div className="flex justify-between items-center mb-3">
             <h2 className="font-semibold text-lg text-green-400">
               Improved Code
@@ -81,7 +92,7 @@ export default function ResultCard({ data }: Props) {
 
             <button
               onClick={() => copy(data.improvedCode)}
-              className="text-xs text-gray-400 hover:text-white"
+              className="text-xs text-gray-400 hover:text-green-400"
             >
               Copy
             </button>
@@ -93,9 +104,12 @@ export default function ResultCard({ data }: Props) {
         </div>
       )}
 
-      {/* 📌 Best Practices */}
+      {/* Best Practices */}
       {data.bestPractices && data.bestPractices.length > 0 && (
-        <div className="bg-gray-900 border border-gray-800 p-5 rounded-xl">
+        <div
+          className="bg-black border border-gray-800 p-5 rounded-xl
+                        shadow-[0_0_15px_rgba(168,85,247,0.4)]"
+        >
           <h2 className="font-semibold text-lg text-purple-400 mb-2">
             Best Practices
           </h2>
